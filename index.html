@@ -515,63 +515,24 @@
                 <div class="flex flex-col lg:flex-row gap-12">
                     <div class="lg:w-1/2">
                         <h3 class="text-2xl font-bold mb-8">Send Me a Message</h3>
-                        
-                        <!-- Success Message (hidden by default) -->
-                        <div id="success-message" class="hidden bg-green-500 text-white p-4 rounded-lg mb-6">
-                            <i class="fas fa-check-circle mr-2"></i> Thank you for your message! I'll get back to you within 24-48 hours.
-                        </div>
-                        
-                        <form id="contact-form" 
-                              action="https://docs.google.com/forms/d/e/1FAIpQLScEE5lw4F2rSp3gxBSDdLUkghum6NH4GUhFTjQZ3y36YgvPoQ/formResponse" 
-                              method="POST" 
-                              target="hidden_iframe"
-                              class="space-y-6">
+                        <form id="contact-form" class="space-y-6">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label for="name" class="block mb-2 font-medium">Full Name *</label>
-                                    <input type="text" 
-                                           id="name" 
-                                           name="entry.253186951" 
-                                           required 
-                                           class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
-                                           placeholder="Your name">
+                                    <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent">
                                 </div>
                                 <div>
                                     <label for="email" class="block mb-2 font-medium">Email Address *</label>
-                                    <input type="email" 
-                                           id="email" 
-                                           name="entry.195687261" 
-                                           required 
-                                           class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
-                                           placeholder="your@email.com">
+                                    <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent">
                                 </div>
                             </div>
                             <div>
                                 <label for="subject" class="block mb-2 font-medium">Subject *</label>
-                                <input type="text" 
-                                       id="subject" 
-                                       name="entry.1728571695" 
-                                       required 
-                                       class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
-                                       placeholder="How can I help you?">
+                                <input type="text" id="subject" name="subject" required class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent">
                             </div>
                             <div>
                                 <label for="message" class="block mb-2 font-medium">Your Message *</label>
-                                <textarea id="message" 
-                                          name="entry.1700198118" 
-                                          rows="5" 
-                                          required 
-                                          class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
-                                          placeholder="Tell me about your project..."></textarea>
-                            </div>
-                            <div class="flex items-center">
-                                <input type="checkbox" 
-                                       id="consent" 
-                                       name="entry.568965213" 
-                                       value="I consent" 
-                                       required 
-                                       class="mr-3 w-5 h-5">
-                                <label for="consent" class="text-white/90">I give my consent to be contacted *</label>
+                                <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"></textarea>
                             </div>
                             <div>
                                 <button type="submit" class="bg-white text-primary hover:bg-gray-100 font-bold py-3 px-8 rounded-lg shadow-lg transition-colors duration-300">
@@ -579,9 +540,6 @@
                                 </button>
                             </div>
                         </form>
-                        
-                        <!-- Hidden iframe for form submission -->
-                        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
                     </div>
                     
                     <div class="lg:w-1/2">
@@ -603,7 +561,7 @@
                                 </div>
                                 <div>
                                     <h4 class="text-xl font-bold mb-2">Email</h4>
-                                    <p class="text-white/80">ramona@semexperta.com</p>
+                                    <p class="text-white/80"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a3d1c2cecccdc2e3d0c6cec6dbd3c6d1d7c28dc0ccce">[email&#160;protected]</a></p>
                                     <p class="text-white/80">Response within 24-48 hours</p>
                                 </div>
                             </div>
@@ -621,73 +579,18 @@
                         
                         <div class="mt-12">
                             <h4 class="text-xl font-bold mb-6">Follow Me</h4>
-                            <div class="flex space-x-4">
-                                <a href="#" class="bg-white/20 hover:bg-white/30 p-3 rounded-lg transition-colors duration-300">
-                                    <i class="fab fa-linkedin text-xl"></i>
+                            <div class="flex space-x-6">
+                                <a href="#" class="bg-white/20 hover:bg-white/30 p-4 rounded-xl transition-colors duration-300">
+                                    <i class="fab fa-linkedin-in text-2xl"></i>
                                 </a>
-                                <a href="#" class="bg-white/20 hover:bg-white/30 p-3 rounded-lg transition-colors duration-300">
-                                    <i class="fab fa-twitter text-xl"></i>
+                                <a href="#" class="bg-white/20 hover:bg-white/30 p-4 rounded-xl transition-colors duration-300">
+                                    <i class="fab fa-twitter text-2xl"></i>
                                 </a>
-                                <a href="#" class="bg-white/20 hover:bg-white/30 p-3 rounded-lg transition-colors duration-300">
-                                    <i class="fab fa-github text-xl"></i>
+                                <a href="#" class="bg-white/20 hover:bg-white/30 p-4 rounded-xl transition-colors duration-300">
+                                    <i class="fab fa-instagram text-2xl"></i>
                                 </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-                        
-                        <!-- Hidden iframe for form submission -->
-                        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-                    </div>
-                    
-                    <div class="lg:w-1/2">
-                        <h3 class="text-2xl font-bold mb-8">Contact Information</h3>
-                        <div class="space-y-8">
-                            <div class="flex items-start">
-                                <div class="bg-white/20 p-4 rounded-xl mr-6">
-                                    <i class="fas fa-map-marker-alt text-2xl"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-xl font-bold mb-2">Location</h4>
-                                    <p class="text-white/80">Barcelona, Spain</p>
-                                    <p class="text-white/80">Available for remote work worldwide</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start">
-                                <div class="bg-white/20 p-4 rounded-xl mr-6">
-                                    <i class="fas fa-envelope text-2xl"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-xl font-bold mb-2">Email</h4>
-                                    <p class="text-white/80">ramona@semexperta.com</p>
-                                    <p class="text-white/80">Response within 24-48 hours</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start">
-                                <div class="bg-white/20 p-4 rounded-xl mr-6">
-                                    <i class="fas fa-phone text-2xl"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-xl font-bold mb-2">Phone</h4>
-                                    <p class="text-white/80">+34 624 612 212</p>
-                                    <p class="text-white/80">Mon-Fri, 10am-5pm CST</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-12">
-                            <h4 class="text-xl font-bold mb-6">Follow Me</h4>
-                            <div class="flex space-x-4">
-                                <a href="#" class="bg-white/20 hover:bg-white/30 p-3 rounded-lg transition-colors duration-300">
-                                    <i class="fab fa-linkedin text-xl"></i>
-                                </a>
-                                <a href="#" class="bg-white/20 hover:bg-white/30 p-3 rounded-lg transition-colors duration-300">
-                                    <i class="fab fa-twitter text-xl"></i>
-                                </a>
-                                <a href="#" class="bg-white/20 hover:bg-white/30 p-3 rounded-lg transition-colors duration-300">
-                                    <i class="fab fa-github text-xl"></i>
+                                <a href="#" class="bg-white/20 hover:bg-white/30 p-4 rounded-xl transition-colors duration-300">
+                                    <i class="fab fa-youtube text-2xl"></i>
                                 </a>
                             </div>
                         </div>
@@ -695,6 +598,7 @@
                 </div>
             </div>
         </section>
+    </main>
 
     <!-- Footer -->
     <footer class="bg-dark text-white py-12">
@@ -702,7 +606,7 @@
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-8 md:mb-0">
                     <a href="#home" class="text-2xl font-bold hover:text-primary transition-colors duration-300" onclick="handleNavigation(event, 'home')">
-                        <span class="text-primary"<span class="text-primary">sem</span><span class="text-accent">experta</span>
+                        <span class="text-primary">sem</span><span class="text-accent">experta</span>
                     </a>
                     <p class="text-gray-400 mt-4 max-w-md">Driving business growth through strategic online search marketing since 2011.</p>
                 </div>
@@ -736,7 +640,7 @@
             </div>
             
             <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-                <p>&copy; <span id="current-year">2026</span> semexperta. All rights reserved.</p>
+                <p>&copy; <span id="current-year">2023</span> semexperta. All rights reserved.</p>
                 <p class="mt-2">Designed with <i class="fas fa-heart text-red-500"></i> for search marketing professionals</p>
             </div>
         </div>
@@ -762,7 +666,7 @@
         </div>
     </div>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Define data at the beginning
         const navigationSections = [
             { "id": "home", "label": "Home" },
@@ -929,19 +833,26 @@
             });
         }
 
-        // Google Forms submission handler
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            setTimeout(function() {
-                document.getElementById('success-message').classList.remove('hidden');
-                document.getElementById('contact-form').reset();
+        // Form submission
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(event) {
+                event.preventDefault();
                 
-                setTimeout(function() {
-                    document.getElementById('success-message').classList.add('hidden');
-                }, 10000);
+                // Get form data
+                const formData = new FormData(contactForm);
+                const formObject = {};
+                formData.forEach((value, key) => {
+                    formObject[key] = value;
+                });
                 
-                document.getElementById('success-message').scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 500);
-        });
+                // In a real application, you would send this data to a server
+                console.log("Form submitted:", formObject);
+                
+                // Show success message
+                alert("Thank you for your message! I'll get back to you within 24 hours.");
+                contactForm.reset();
+            });
+        }
 
         // Cookie consent
         cookieAccept.addEventListener('click', function() {
@@ -983,12 +894,4 @@
             const isClickOnButton = mobileMenuButton.contains(event.target);
             
             if (!isClickInsideMenu && !isClickOnButton && !mobileMenu.classList.contains('hidden')) {
-                mobileMenu.classList.add('hidden');
-                const icon = mobileMenuButton.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
-    </script>
-</body>
-</html>
+                mobileMenu.classList.ad
