@@ -524,8 +524,8 @@
                         <form id="contact-form" 
                               action="https://docs.google.com/forms/d/e/1FAIpQLScEE5lw4F2rSp3gxBSDdLUkghum6NH4GUhFTjQZ3y36YgvPoQ/formResponse" 
                               method="POST" 
-                              target="hidden_iframe" 
-                              class="space-y-6">
+                              target="hidden_iframe"
+                              onsubmit="handleFormSubmit()">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label for="name" class="block mb-2 font-medium">Full Name *</label>
@@ -579,6 +579,64 @@
                                 </button>
                             </div>
                         </form>
+                        
+                        <!-- Hidden iframe for form submission -->
+                        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="formSubmitted()"></iframe>
+                    </div>
+                    
+                    <div class="lg:w-1/2">
+                        <h3 class="text-2xl font-bold mb-8">Contact Information</h3>
+                        <div class="space-y-8">
+                            <div class="flex items-start">
+                                <div class="bg-white/20 p-4 rounded-xl mr-6">
+                                    <i class="fas fa-map-marker-alt text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold mb-2">Location</h4>
+                                    <p class="text-white/80">Barcelona, Spain</p>
+                                    <p class="text-white/80">Available for remote work worldwide</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-white/20 p-4 rounded-xl mr-6">
+                                    <i class="fas fa-envelope text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold mb-2">Email</h4>
+                                    <p class="text-white/80">ramona@semexperta.com</p>
+                                    <p class="text-white/80">Response within 24-48 hours</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-white/20 p-4 rounded-xl mr-6">
+                                    <i class="fas fa-phone text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold mb-2">Phone</h4>
+                                    <p class="text-white/80">+34 624 612 212</p>
+                                    <p class="text-white/80">Mon-Fri, 10am-5pm CST</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-12">
+                            <h4 class="text-xl font-bold mb-6">Follow Me</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="bg-white/20 hover:bg-white/30 p-3 rounded-lg transition-colors duration-300">
+                                    <i class="fab fa-linkedin text-xl"></i>
+                                </a>
+                                <a href="#" class="bg-white/20 hover:bg-white/30 p-3 rounded-lg transition-colors duration-300">
+                                    <i class="fab fa-twitter text-xl"></i>
+                                </a>
+                                <a href="#" class="bg-white/20 hover:bg-white/30 p-3 rounded-lg transition-colors duration-300">
+                                    <i class="fab fa-github text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
                         
                         <!-- Hidden iframe for form submission -->
                         <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
@@ -871,26 +929,30 @@
             });
         }
 
-        // Form submission
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(event) {
-                // Allow form to submit to Google Forms
-                setTimeout(function() {
-                    // Show success message
+        // Form submission handler
+        let formSubmitted = false;
+        
+        function handleFormSubmit() {
+            formSubmitted = true;
+            setTimeout(function() {
+                if (formSubmitted) {
                     document.getElementById('success-message').classList.remove('hidden');
+                    document.getElementById('contact-form').reset();
                     
-                    // Reset form
-                    contactForm.reset();
-                    
-                    // Hide success message after 10 seconds
                     setTimeout(function() {
                         document.getElementById('success-message').classList.add('hidden');
                     }, 10000);
                     
-                    // Scroll to success message
                     document.getElementById('success-message').scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }, 500);
-            });
+                }
+            }, 1000);
+            return true;
+        }
+        
+        function formSubmitted() {
+            if (formSubmitted) {
+                // This fires when iframe loads after form submission
+            }
         }
 
         // Cookie consent
