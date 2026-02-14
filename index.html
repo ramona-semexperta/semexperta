@@ -218,7 +218,7 @@
             </div>
         </section>
 
-        <!-- Projects Section -->
+   <!-- Projects Section -->
         <section id="projects" class="section-padding bg-light">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
@@ -228,22 +228,20 @@
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Project 1 -->
-                    <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
-                        <div class="h-48 overflow-hidden">
-                            <img src="https://picsum.photos/600/400?random=201" alt="E-commerce SEO Project" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy">
-                        </div>
-                        <div class="p-6">
-                            <div class="flex justify-between items-start mb-4">
-                                <h3 class="text-xl font-bold text-dark">E-commerce SEO Overhaul</h3>
-                                <span class="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full">+150% Traffic</span>
+                    <div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                        <div class="relative overflow-hidden">
+                            <img src="https://picsum.photos/600/400?random=201" alt="E-commerce SEO Project" class="w-full h-64 object-cover transform hover:scale-110 transition-transform duration-500">
+                            <div class="absolute top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-full font-bold">
+                                +150% Traffic
                             </div>
-                            <p class="text-gray-600 mb-6">
-                                Content SEO strategy for an online retailer in health sector, resulting in 150% organic traffic growth in 6 months.
-                            </p>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold text-dark mb-3">E-commerce SEO Overhaul</h3>
+                            <p class="text-gray-600 mb-6">Content SEO strategy for an online retailer in health sector, resulting in 150% organic traffic growth in 6 months.</p>
                             <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="bg-light text-dark text-sm px-3 py-1 rounded-full">On-page SEO</span>
-                                <span class="bg-light text-dark text-sm px-3 py-1 rounded-full">Content Strategy</span>
-                                <span class="bg-light text-dark text-sm px-3 py-1 rounded-full">Blog creation/span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-semibold">On-page SEO</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-semibold">Content Strategy</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-semibold">Blog creation</span>
                             </div>
                             <a href="#contact" class="text-primary font-semibold hover:text-secondary flex items-center" onclick="handleNavigation(event, 'contact')">
                                 View Case Study <i class="fas fa-arrow-right ml-2"></i>
@@ -252,22 +250,20 @@
                     </div>
                     
                     <!-- Project 2 -->
-                    <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
-                        <div class="h-48 overflow-hidden">
-                            <img src="https://picsum.photos/600/400?random=202" alt="SaaS PPC Campaign" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy">
-                        </div>
-                        <div class="p-6">
-                            <div class="flex justify-between items-start mb-4">
-                                <h3 class="text-xl font-bold text-dark">SaaS PPC Campaign</h3>
-                                <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full">-40% CPA</span>
+                    <div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                        <div class="relative overflow-hidden">
+                            <img src="https://picsum.photos/600/400?random=202" alt="SaaS PPC Campaign" class="w-full h-64 object-cover transform hover:scale-110 transition-transform duration-500">
+                            <div class="absolute top-4 right-4 bg-blue-500 text-white px-4 py-2 rounded-full font-bold">
+                                -40% CPA
                             </div>
-                            <p class="text-gray-600 mb-6">
-                                Managed Google Ads and LinkedIn campaigns for a B2B SaaS company, reducing cost per acquisition by 40% while increasing qualified leads.
-                            </p>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold text-dark mb-3">SaaS PPC Campaign</h3>
+                            <p class="text-gray-600 mb-6">Managed Google Ads and LinkedIn campaigns for a B2B SaaS company, reducing cost per acquisition by 40% while increasing qualified leads.</p>
                             <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="bg-light text-dark text-sm px-3 py-1 rounded-full">Google Ads</span>
-                                <span class="bg-light text-dark text-sm px-3 py-1 rounded-full">LinkedIn Ads</span>
-                                <span class="bg-light text-dark text-sm px-3 py-1 rounded-full">Conversion Tracking</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-semibold">Google Ads</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-semibold">LinkedIn Ads</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-semibold">Conversion Tracking</span>
                             </div>
                             <a href="#contact" class="text-primary font-semibold hover:text-secondary flex items-center" onclick="handleNavigation(event, 'contact')">
                                 View Case Study <i class="fas fa-arrow-right ml-2"></i>
@@ -276,128 +272,38 @@
                     </div>
                     
                     <!-- Project 3 -->
-                    <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
-                        <div class="h-48 overflow-hidden">
-                            <img src="https://picsum.photos/600/400?random=203" alt="Local SEO Project" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy">
-                        </div>
-                        <div class="p-6">
-                            <div class="flex justify-between items-start mb-4">
-                                <h3 class="text-xl font-bold text-dark">PPC strategy for Travel Company</h3>
-                                <span class="bg-purple-100 text-purple-800 text-xs font-semibold px-3 py-1 rounded-full">#1 Rankings</span>
+                    <div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                        <div class="relative overflow-hidden">
+                            <img src="https://picsum.photos/600/400?random=203" alt="PPC strategy for Travel Company" class="w-full h-64 object-cover transform hover:scale-110 transition-transform duration-500">
+                            <div class="absolute top-4 right-4 bg-purple-500 text-white px-4 py-2 rounded-full font-bold">
+                                #1 Rankings
                             </div>
-                            <p class="text-gray-600 mb-6">
-                                Executing PPC strategy and launch for a multi-domain travel sector business, with break-even fromday 1 and continious growth in 5 major European markets.
-                            </p>
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold text-dark mb-3">PPC strategy for Travel Company</h3>
+                            <p class="text-gray-600 mb-6">Executing PPC strategy and launch for a multi-domain travel sector business, with break-even from day 1 and continuous growth in 5 major European markets.</p>
                             <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="bg-light text-dark text-sm px-3 py-1 rounded-full">Global PPC</span>
-                                <span class="bg-light text-dark text-sm px-3 py-1 rounded-full">Google Ads</span>
-                                <span class="bg-light text-dark text-sm px-3 py-1 rounded-full">Strategy</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-semibold">Global PPC</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-semibold">Google Ads</span>
+                                <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-semibold">Strategy</span>
                             </div>
                             <a href="#contact" class="text-primary font-semibold hover:text-secondary flex items-center" onclick="handleNavigation(event, 'contact')">
                                 View Case Study <i class="fas fa-arrow-right ml-2"></i>
                             </a>
                         </div>
                     </div>
-                </div>
-                              
-        </section>
+                    
                     <!-- Project 4 -->
-                    <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
-                        <div class="h-48 overflow-hidden">
-                            <img src="https://picsum.photos/600/400?random=203" alt="Local SEO Project" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy">
-                        </div>
-                        <div class="p-6">
-                            <div class="flex justify-between items-start mb-4">
-                                <h3 class="text-xl font-bold text-dark">Google Ads - Go-to Market Financal Sector</h3>
-                                <span class="bg-purple-100 text-purple-800 text-xs font-semibold px-3 py-1 rounded-full">#1 Rankings</span>
+                    <div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                        <div class="relative overflow-hidden">
+                            <img src="https://picsum.photos/600/400?random=204" alt="Google Ads - Go-to Market Financial Sector" class="w-full h-64 object-cover transform hover:scale-110 transition-transform duration-500">
+                            <div class="absolute top-4 right-4 bg-orange-500 text-white px-4 py-2 rounded-full font-bold">
+                                Market Launch
                             </div>
-                            <p class="text-gray-600 mb-6">
-                                Planning & executing PPC strategy for global Fiinance institution service business, go-to competitive German market.
-                            </p>
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="bg-light text-dark text-sm px-3 py-1 rounded-full">PPC strategy</span>
-                                <span class="bg-light text-dark text-sm px-3 py-1 rounded-full">Google Ads and Bing Ads</span>
-                                <span class="bg-light text-dark text-sm px-3 py-1 rounded-full">Market launch/span>
-                            </div>
-                            <a href="#contact" class="text-primary font-semibold hover:text-secondary flex items-center" onclick="handleNavigation(event, 'contact')">
-                                View Case Study <i class="fas fa-arrow-right ml-2"></i>
-                            </a>
                         </div>
-                    </div>
-                </div>
-                
-                <div class="text-center mt-12">
-                    <a href="#contact" class="inline-flex items-center text-primary font-bold text-lg hover:text-secondary" onclick="handleNavigation(event, 'contact')">
-                        View All Projects <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-            </div>
-        </section>
-                    <!-- Project 5 -->
-                    <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
-                        <div class="h-48 overflow-hidden">
-                            <img src="https://picsum.photos/600/400?random=203" alt="Local SEO Project" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy">
-                        </div>
-                        <div class="p-6">
-                            <div class="flex justify-between items-start mb-4">
-                                <h3 class="text-xl font-bold text-dark">Local SEO Dominance</h3>
-                                <span class="bg-purple-100 text-purple-800 text-xs font-semibold px-3 py-1 rounded-full">#1 Rankings</span>
-                            </div>
-                            <p class="text-gray-600 mb-6">
-                                Local SEO strategy for a multi-location service business, achieving #1 rankings for 15+ key search terms in 3 major markets.
-                            </p>
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="bg-light text-dark text-sm px-3 py-1 rounded-full">Local SEO</span>
-                                <span class="bg-light text-dark text-sm px-3 py-1 rounded-full">Google My Business</span>
-                                <span class="bg-light text-dark text-sm px-3 py-1 rounded-full">Citation Building</span>
-                            </div>
-                            <a href="#contact" class="text-primary font-semibold hover:text-secondary flex items-center" onclick="handleNavigation(event, 'contact')">
-                                View Case Study <i class="fas fa-arrow-right ml-2"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="text-center mt-12">
-                    <a href="#contact" class="inline-flex items-center text-primary font-bold text-lg hover:text-secondary" onclick="handleNavigation(event, 'contact')">
-                        View All Projects <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-                    <!-- Project 6 -->
-                    <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
-                        <div class="h-48 overflow-hidden">
-                            <img src="https://picsum.photos/600/400?random=203" alt="Local SEO Project" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy">
-                        </div>
-                        <div class="p-6">
-                            <div class="flex justify-between items-start mb-4">
-                                <h3 class="text-xl font-bold text-dark">Local SEO Dominance</h3>
-                                <span class="bg-purple-100 text-purple-800 text-xs font-semibold px-3 py-1 rounded-full">#1 Rankings</span>
-                            </div>
-                            <p class="text-gray-600 mb-6">
-                                Local SEO strategy for a multi-location service business in the US, achieving #1 rankings for 15+ key search terms.
-                            </p>
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="bg-light text-dark text-sm px-3 py-1 rounded-full">Local SEO</span>
-                                <span class="bg-light text-dark text-sm px-3 py-1 rounded-full">Google My Business</span>
-                                <span class="bg-light text-dark text-sm px-3 py-1 rounded-full">Citation Building</span>
-                            </div>
-                            <a href="#contact" class="text-primary font-semibold hover:text-secondary flex items-center" onclick="handleNavigation(event, 'contact')">
-                                View Case Study <i class="fas fa-arrow-right ml-2"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="text-center mt-12">
-                    <a href="#contact" class="inline-flex items-center text-primary font-bold text-lg hover:text-secondary" onclick="handleNavigation(event, 'contact')">
-                        View All Projects <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-            </div>
-        </section>   
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold text-dark mb-3">Google Ads - Go-to Market Financial Sector</h3>
+                            <p class="text-gray-600 mb-6">Planning & executing PPC strategy for global Finance institution service business, go-to competitive German market.</p>
 
         <!-- Services Section -->
         <section id="services" class="section-padding bg-white">
