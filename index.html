@@ -515,24 +515,63 @@
                 <div class="flex flex-col lg:flex-row gap-12">
                     <div class="lg:w-1/2">
                         <h3 class="text-2xl font-bold mb-8">Send Me a Message</h3>
-                        <form id="contact-form" class="space-y-6">
+                        
+                        <!-- Success Message (hidden by default) -->
+                        <div id="success-message" class="hidden bg-green-500 text-white p-4 rounded-lg mb-6">
+                            <i class="fas fa-check-circle mr-2"></i> Thank you for your message! I'll get back to you within 24-48 hours.
+                        </div>
+                        
+                        <form id="contact-form" 
+                              action="https://docs.google.com/forms/d/e/1FAIpQLScEE5lw4F2rSp3gxBSDdLUkghum6NH4GUhFTjQZ3y36YgvPoQ/formResponse" 
+                              method="POST" 
+                              target="hidden_iframe" 
+                              class="space-y-6">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label for="name" class="block mb-2 font-medium">Full Name *</label>
-                                    <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent">
+                                    <input type="text" 
+                                           id="name" 
+                                           name="entry.253186951" 
+                                           required 
+                                           class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
+                                           placeholder="Your name">
                                 </div>
                                 <div>
                                     <label for="email" class="block mb-2 font-medium">Email Address *</label>
-                                    <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent">
+                                    <input type="email" 
+                                           id="email" 
+                                           name="entry.195687261" 
+                                           required 
+                                           class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
+                                           placeholder="your@email.com">
                                 </div>
                             </div>
                             <div>
                                 <label for="subject" class="block mb-2 font-medium">Subject *</label>
-                                <input type="text" id="subject" name="subject" required class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent">
+                                <input type="text" 
+                                       id="subject" 
+                                       name="entry.1728571695" 
+                                       required 
+                                       class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
+                                       placeholder="How can I help you?">
                             </div>
                             <div>
                                 <label for="message" class="block mb-2 font-medium">Your Message *</label>
-                                <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"></textarea>
+                                <textarea id="message" 
+                                          name="entry.1700198118" 
+                                          rows="5" 
+                                          required 
+                                          class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
+                                          placeholder="Tell me about your project..."></textarea>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" 
+                                       id="consent" 
+                                       name="entry.568965213" 
+                                       value="I consent" 
+                                       required 
+                                       class="mr-3 w-5 h-5">
+                                <label for="consent" class="text-white/90">I give my consent to be contacted *</label>
                             </div>
                             <div>
                                 <button type="submit" class="bg-white text-primary hover:bg-gray-100 font-bold py-3 px-8 rounded-lg shadow-lg transition-colors duration-300">
@@ -540,6 +579,9 @@
                                 </button>
                             </div>
                         </form>
+                        
+                        <!-- Hidden iframe for form submission -->
+                        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
                     </div>
                     
                     <div class="lg:w-1/2">
@@ -579,18 +621,15 @@
                         
                         <div class="mt-12">
                             <h4 class="text-xl font-bold mb-6">Follow Me</h4>
-                            <div class="flex space-x-6">
-                                <a href="#" class="bg-white/20 hover:bg-white/30 p-4 rounded-xl transition-colors duration-300">
-                                    <i class="fab fa-linkedin-in text-2xl"></i>
+                            <div class="flex space-x-4">
+                                <a href="#" class="bg-white/20 hover:bg-white/30 p-3 rounded-lg transition-colors duration-300">
+                                    <i class="fab fa-linkedin text-xl"></i>
                                 </a>
-                                <a href="#" class="bg-white/20 hover:bg-white/30 p-4 rounded-xl transition-colors duration-300">
-                                    <i class="fab fa-twitter text-2xl"></i>
+                                <a href="#" class="bg-white/20 hover:bg-white/30 p-3 rounded-lg transition-colors duration-300">
+                                    <i class="fab fa-twitter text-xl"></i>
                                 </a>
-                                <a href="#" class="bg-white/20 hover:bg-white/30 p-4 rounded-xl transition-colors duration-300">
-                                    <i class="fab fa-instagram text-2xl"></i>
-                                </a>
-                                <a href="#" class="bg-white/20 hover:bg-white/30 p-4 rounded-xl transition-colors duration-300">
-                                    <i class="fab fa-youtube text-2xl"></i>
+                                <a href="#" class="bg-white/20 hover:bg-white/30 p-3 rounded-lg transition-colors duration-300">
+                                    <i class="fab fa-github text-xl"></i>
                                 </a>
                             </div>
                         </div>
@@ -598,7 +637,6 @@
                 </div>
             </div>
         </section>
-    </main>
 
     <!-- Footer -->
     <footer class="bg-dark text-white py-12">
@@ -836,21 +874,22 @@
         // Form submission
         if (contactForm) {
             contactForm.addEventListener('submit', function(event) {
-                event.preventDefault();
-                
-                // Get form data
-                const formData = new FormData(contactForm);
-                const formObject = {};
-                formData.forEach((value, key) => {
-                    formObject[key] = value;
-                });
-                
-                // In a real application, you would send this data to a server
-                console.log("Form submitted:", formObject);
-                
-                // Show success message
-                alert("Thank you for your message! I'll get back to you within 24 hours.");
-                contactForm.reset();
+                // Allow form to submit to Google Forms
+                setTimeout(function() {
+                    // Show success message
+                    document.getElementById('success-message').classList.remove('hidden');
+                    
+                    // Reset form
+                    contactForm.reset();
+                    
+                    // Hide success message after 10 seconds
+                    setTimeout(function() {
+                        document.getElementById('success-message').classList.add('hidden');
+                    }, 10000);
+                    
+                    // Scroll to success message
+                    document.getElementById('success-message').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 500);
             });
         }
 
