@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Free PPC Keyword Concatenation Tool | semexperta</title>
 <meta name="description" content="Free PPC Keyword Concatenation Tool by semexperta. Combine keyword lists, generate all match types — Exact, Phrase, Broad, Modified — and export to CSV in seconds.">
-<meta name="keywords" content="PPC keyword tool, google keyword tool Google Ads keywords, keyword research, PPC campaigns, free keyword research tool, keyword list generator, free PPC tools">
+<meta name="keywords" content="PPC keyword tool, keyword concatenation, Google Ads keywords, match types, PPC campaign, keyword list generator, free PPC tool">
 <meta name="author" content="semexperta">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://semexperta.com/ppc-keyword-tool.html">
@@ -702,12 +702,33 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2025 semexperta. All rights reserved.</p>
-    <p>Designed with ❤️ for Search Marketing</p>
+    <p>© 2026 semexperta. All rights reserved.</p>
+    <p>Designed for Search Marketing professionals</p>
   </div>
 </footer>
 
 <script>
+  // Supabase config
+  const SUPABASE_URL = 'https://ixolifxyaropuprwmkib.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml4b2xpZnh5YXJvcHVwcndta2liIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQxOTMwNDMsImV4cCI6MjA4OTc2OTA0M30.2FOP1xtpYuy5fjbh9PVBiesc6RgVvjSFdZqd131rFtU';
+
+  async function saveToSupabase(data) {
+    try {
+      await fetch(`${SUPABASE_URL}/rest/v1/keyword_generations`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SUPABASE_KEY,
+          'Authorization': `Bearer ${SUPABASE_KEY}`,
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify(data)
+      });
+    } catch (e) {
+      console.error('Could not save to Supabase:', e);
+    }
+  }
+
   let showSymbols = false;
   let showLabels = true;
   let maxChar = false;
@@ -794,6 +815,20 @@
 
     lastResults = output;
     renderOutput();
+
+    // Save to Supabase
+    const selectedMatchTypes = matchTypes.join(', ');
+    const selectedPerms = perms.join(', ');
+    saveToSupabase({
+      list_a: document.getElementById('col-a').value.trim(),
+      list_b: document.getElementById('col-b').value.trim(),
+      list_c: document.getElementById('col-c').value.trim(),
+      list_d: document.getElementById('col-d').value.trim(),
+      match_types: selectedMatchTypes,
+      permutations: selectedPerms,
+      total_keywords: output.length,
+      output: output.map(r => r.formatted).join('\n').substring(0, 10000)
+    });
   }
 
   function renderOutput() {
