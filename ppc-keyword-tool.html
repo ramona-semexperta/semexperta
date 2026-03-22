@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PPC Keyword Concatenation Tool | semexperta</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1b2a;
+    --navy-mid: #162232;
+    --navy-light: #1e2e40;
+    --accent: #3dd9d7;
+    --accent2: #4fa3e0;
+    --white: #f5f7fa;
+    --muted: #8a9bb0;
+    --border: rgba(255,255,255,0.08);
+    --card-bg: rgba(255,255,255,0.04);
+    --radius: 10px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(13,27,42,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    height: 62px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .nav-logo span { color: #3dd9d7; }
+  .nav-logo em { color: #2a93d5; font-style: normal; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--white); }
+  .nav-cta {
+    background: var(--accent);
+    color: var(--navy) !important;
+    padding: 0.45rem 1.1rem;
+    border-radius: 6px;
+    font-weight: 600 !important;
+  }
+  .nav-cta:hover { background: #5ee8e6 !important; color: var(--navy) !important; }
+
+  /* HERO */
+  .hero {
+    padding: 4rem 2rem 2.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(232,197,71,0.12);
+    border: 1px solid rgba(232,197,71,0.3);
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.9rem;
+    border-radius: 20px;
+    margin-bottom: 1.25rem;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.9rem, 4vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+  .hero h1 em { color: var(--accent); font-style: normal; }
+  .hero p {
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* TOOL WRAPPER */
+  .tool-wrapper {
+    flex: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 1.5rem 4rem;
+  }
+
+  /* COLUMNS GRID */
+  .columns-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  @media (max-width: 800px) {
+    .columns-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 500px) {
+    .columns-grid { grid-template-columns: 1fr; }
+  }
+
+  .col-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    transition: border-color 0.2s;
+  }
+  .col-card:hover { border-color: rgba(255,255,255,0.15); }
+
+  .col-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.85rem;
+  }
+  .col-label {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+  .col-a .col-label { background: rgba(79,163,224,0.2); color: var(--accent2); }
+  .col-b .col-label { background: rgba(232,197,71,0.2); color: var(--accent); }
+  .col-c .col-label { background: rgba(120,200,120,0.2); color: #7bc87b; }
+  .col-d .col-label { background: rgba(200,120,200,0.2); color: #c87bc8; }
+  .col-title { font-size: 0.8rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+
+  .col-card textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    padding: 0.6rem 0.75rem;
+    resize: vertical;
+    min-height: 120px;
+    line-height: 1.5;
+    transition: border-color 0.2s;
+  }
+  .col-card textarea:focus {
+    outline: none;
+    border-color: rgba(232,197,71,0.4);
+  }
+  .col-card textarea::placeholder { color: rgba(138,155,176,0.5); }
+
+  .col-extras {
+    margin-top: 0.6rem;
+    display: flex;
+    gap: 0.5rem;
+  }
+  .mini-input {
+    flex: 1;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.76rem;
+    padding: 0.4rem 0.6rem;
+  }
+  .mini-input:focus { outline: none; border-color: rgba(232,197,71,0.3); }
+  .mini-input::placeholder { color: rgba(138,155,176,0.4); font-size: 0.72rem; }
+
+  /* OPTIONS PANEL */
+  .options-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  @media (max-width: 650px) { .options-panel { grid-template-columns: 1fr; } }
+
+  .option-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+  }
+  .option-card h3 {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.9rem;
+  }
+
+  .check-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.45rem;
+  }
+  .check-item {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    cursor: pointer;
+    padding: 0.3rem;
+    border-radius: 5px;
+    transition: background 0.15s;
+  }
+  .check-item:hover { background: rgba(255,255,255,0.04); }
+  .check-item input[type="checkbox"] {
+    accent-color: var(--accent);
+    width: 14px; height: 14px;
+    cursor: pointer;
+  }
+  .check-item label {
+    font-size: 0.8rem;
+    color: var(--muted);
+    cursor: pointer;
+    user-select: none;
+  }
+  .check-item input:checked + label { color: var(--white); }
+
+  .perm-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+  }
+  .perm-tag {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 0.3rem 0.6rem;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .perm-tag:hover { border-color: rgba(232,197,71,0.3); }
+  .perm-tag input { accent-color: var(--accent); cursor: pointer; }
+  .perm-tag label { font-size: 0.78rem; color: var(--muted); cursor: pointer; font-family: monospace; }
+  .perm-tag input:checked ~ label { color: var(--white); }
+  .perm-tag:has(input:checked) { background: rgba(232,197,71,0.08); border-color: rgba(232,197,71,0.25); }
+
+  .select-links {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .select-links button {
+    background: none;
+    border: none;
+    color: var(--accent2);
+    font-size: 0.75rem;
+    cursor: pointer;
+    padding: 0;
+    font-family: 'DM Sans', sans-serif;
+    text-decoration: underline;
+  }
+
+  /* ACTION BUTTONS */
+  .action-row {
+    display: flex;
+    gap: 0.85rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .btn {
+    padding: 0.7rem 1.6rem;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--navy);
+  }
+  .btn-primary:hover { background: #5ee8e6; transform: translateY(-1px); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid var(--border);
+  }
+  .btn-secondary:hover { border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.05); }
+  .btn-danger {
+    background: transparent;
+    color: #e07070;
+    border: 1px solid rgba(224,112,112,0.25);
+    font-size: 0.8rem;
+    padding: 0.7rem 1.2rem;
+  }
+  .btn-danger:hover { background: rgba(224,112,112,0.08); }
+
+  /* OUTPUT */
+  .output-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+  .output-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .output-stats {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .stat-badge {
+    background: rgba(232,197,71,0.15);
+    color: var(--accent);
+    border: 1px solid rgba(232,197,71,0.3);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;
+  }
+  .output-stat-text {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+  .output-actions {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+  .btn-sm {
+    padding: 0.4rem 0.9rem;
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    transition: all 0.15s;
+  }
+  .btn-sm:hover { color: var(--white); border-color: rgba(255,255,255,0.2); }
+  .btn-sm.active { background: rgba(79,163,224,0.12); color: var(--accent2); border-color: rgba(79,163,224,0.3); }
+
+  #output-area {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: var(--white);
+    font-family: 'DM Mono', 'Courier New', monospace;
+    font-size: 0.8rem;
+    line-height: 1.65;
+    padding: 1.25rem;
+    min-height: 220px;
+    resize: vertical;
+  }
+  #output-area:focus { outline: none; }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy-mid);
+    border-top: 1px solid var(--border);
+    padding: 2.5rem 2rem;
+  }
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  @media (max-width: 700px) {
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+  }
+  .footer-brand .nav-logo { display: inline-block; margin-bottom: 0.75rem; }
+  .footer-brand p { color: var(--muted); font-size: 0.82rem; line-height: 1.6; }
+  .footer-col h4 {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.85rem;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 0.5rem; }
+  .footer-col ul a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.82rem;
+    transition: color 0.15s;
+  }
+  .footer-col ul a:hover { color: var(--white); }
+  .footer-col ul a.current { color: var(--accent); }
+  .footer-bottom {
+    max-width: 1100px;
+    margin: 0 auto;
+    border-top: 1px solid var(--border);
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .footer-bottom p { color: var(--muted); font-size: 0.78rem; }
+  .footer-bottom a { color: var(--muted); text-decoration: none; }
+  .footer-bottom a:hover { color: var(--white); }
+
+  /* CHAR WARNING */
+  .char-warning { color: #e07070; font-size: 0.75rem; margin-top: 0.35rem; display: none; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://semexperta.com" class="nav-logo"><em>sem</em><span>experta</span></a>
+  <ul class="nav-links">
+    <li><a href="https://semexperta.com/#about">About</a></li>
+    <li><a href="https://semexperta.com/#projects">Projects</a></li>
+    <li><a href="https://semexperta.com/#services">Services</a></li>
+    <li><a href="#" class="active">Tools</a></li>
+    <li><a href="https://semexperta.com/#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">⚡ Free PPC Tool</div>
+  <h1>PPC Keyword <em>Concatenation</em> Tool</h1>
+  <p>Combine keyword lists, generate match types, and build exhaustive PPC keyword sets in seconds. Built for paid search professionals.</p>
+</div>
+
+<!-- TOOL -->
+<div class="tool-wrapper">
+
+  <!-- KEYWORD COLUMNS -->
+  <div class="columns-grid">
+    <div class="col-card col-a">
+      <div class="col-header">
+        <div class="col-label">A</div>
+        <span class="col-title">List A</span>
+      </div>
+      <textarea id="col-a" placeholder="running shoes&#10;trail shoes&#10;sport shoes"></textarea>
+      <div class="col-extras">
+        <input class="mini-input" id="prefix-a" placeholder="Prefix A" type="text">
+        <input class="mini-input" id="suffix-a" placeholder="Suffix A" type="text">
+      </div>
+    </div>
+    <div class="col-card col-b">
+      <div class="col-header">
+        <div class="col-label">B</div>
+        <span class="col-title">List B</span>
+      </div>
+      <textarea id="col-b" placeholder="buy&#10;cheap&#10;best"></textarea>
+      <div class="col-extras">
+        <input class="mini-input" id="prefix-b" placeholder="Prefix B" type="text">
+        <input class="mini-input" id="suffix-b" placeholder="Suffix B" type="text">
+      </div>
+    </div>
+    <div class="col-card col-c">
+      <div class="col-header">
+        <div class="col-label">C</div>
+        <span class="col-title">List C</span>
+      </div>
+      <textarea id="col-c" placeholder="online&#10;uk&#10;2024"></textarea>
+      <div class="col-extras">
+        <input class="mini-input" id="prefix-c" placeholder="Prefix C" type="text">
+        <input class="mini-input" id="suffix-c" placeholder="Suffix C" type="text">
+      </div>
+    </div>
+    <div class="col-card col-d">
+      <div class="col-header">
+        <div class="col-label">D</div>
+        <span class="col-title">List D</span>
+      </div>
+      <textarea id="col-d" placeholder="free delivery&#10;sale&#10;discount"></textarea>
+      <div class="col-extras">
+        <input class="mini-input" id="prefix-d" placeholder="Prefix D" type="text">
+        <input class="mini-input" id="suffix-d" placeholder="Suffix D" type="text">
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTIONS -->
+  <div class="options-panel">
+    <!-- Match types -->
+    <div class="option-card">
+      <h3>Match Types</h3>
+      <div class="select-links">
+        <button onclick="selectAllMatch(true)">Select all</button>
+        <button onclick="selectAllMatch(false)">Deselect all</button>
+      </div>
+      <div class="check-grid">
+        <label class="check-item"><input type="checkbox" id="mt-exact" checked><label for="mt-exact">[Exact]</label></label>
+        <label class="check-item"><input type="checkbox" id="mt-phrase" checked><label for="mt-phrase">"Phrase"</label></label>
+        <label class="check-item"><input type="checkbox" id="mt-broad"><label for="mt-broad">Broad</label></label>
+        <label class="check-item"><input type="checkbox" id="mt-modified"><label for="mt-modified">+Modified</label></label>
+        <label class="check-item"><input type="checkbox" id="mt-neg-exact"><label for="mt-neg-exact">-[Neg Exact]</label></label>
+        <label class="check-item"><input type="checkbox" id="mt-neg-phrase"><label for="mt-neg-phrase">-"Neg Phrase"</label></label>
+        <label class="check-item"><input type="checkbox" id="mt-neg-broad"><label for="mt-neg-broad">-Neg Broad</label></label>
+        <label class="check-item"><input type="checkbox" id="mt-capitalize"><label for="mt-capitalize">Capitalize</label></label>
+      </div>
+    </div>
+
+    <!-- Permutations -->
+    <div class="option-card">
+      <h3>Permutations</h3>
+      <div class="select-links">
+        <button onclick="selectAllPerms(true)">Select all</button>
+        <button onclick="selectAllPerms(false)">Deselect all</button>
+      </div>
+      <div class="perm-grid">
+        <label class="perm-tag"><input type="checkbox" class="perm-cb" value="ABC" checked><label>A,B,C</label></label>
+        <label class="perm-tag"><input type="checkbox" class="perm-cb" value="ACB"><label>A,C,B</label></label>
+        <label class="perm-tag"><input type="checkbox" class="perm-cb" value="BAC"><label>B,A,C</label></label>
+        <label class="perm-tag"><input type="checkbox" class="perm-cb" value="BCA"><label>B,C,A</label></label>
+        <label class="perm-tag"><input type="checkbox" class="perm-cb" value="CAB"><label>C,A,B</label></label>
+        <label class="perm-tag"><input type="checkbox" class="perm-cb" value="CBA"><label>C,B,A</label></label>
+        <label class="perm-tag"><input type="checkbox" class="perm-cb" value="AB" checked><label>A,B</label></label>
+        <label class="perm-tag"><input type="checkbox" class="perm-cb" value="BA"><label>B,A</label></label>
+        <label class="perm-tag"><input type="checkbox" class="perm-cb" value="AC"><label>A,C</label></label>
+        <label class="perm-tag"><input type="checkbox" class="perm-cb" value="CA"><label>C,A</label></label>
+        <label class="perm-tag"><input type="checkbox" class="perm-cb" value="BC"><label>B,C</label></label>
+        <label class="perm-tag"><input type="checkbox" class="perm-cb" value="CB"><label>C,B</label></label>
+        <label class="perm-tag"><input type="checkbox" class="perm-cb" value="ABCD"><label>A,B,C,D</label></label>
+        <label class="perm-tag"><input type="checkbox" class="perm-cb" value="AD"><label>A,D</label></label>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTIONS -->
+  <div class="action-row">
+    <button class="btn btn-primary" onclick="concatenate()">⚡ Concatenate</button>
+    <button class="btn btn-secondary" onclick="copyOutput()">📋 Copy Output</button>
+    <button class="btn btn-secondary" onclick="downloadCSV()">⬇ Download CSV</button>
+    <button class="btn btn-danger" onclick="resetAll()">↺ Reset All</button>
+  </div>
+
+  <!-- OUTPUT -->
+  <div class="output-card">
+    <div class="output-header">
+      <div class="output-stats">
+        <span class="stat-badge" id="result-count">0 Results</span>
+        <span class="output-stat-text" id="long-count"></span>
+      </div>
+      <div class="output-actions">
+        <button class="btn-sm" id="btn-symbols" onclick="toggleSymbols()">With Symbols</button>
+        <button class="btn-sm active" id="btn-labels" onclick="toggleLabels()">With Labels</button>
+        <button class="btn-sm" id="btn-maxchar" onclick="toggleMaxChar()">Max 25 chars</button>
+      </div>
+    </div>
+    <textarea id="output-area" readonly placeholder="Your concatenated keywords will appear here…"></textarea>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="https://semexperta.com" class="nav-logo"><em>sem</em><span>experta</span></a>
+      <p>Driving business growth through strategic online search marketing since 2011. Specialist in PPC, SEO & Analytics for DE, EN & ES markets.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="https://semexperta.com/#home">Home</a></li>
+        <li><a href="https://semexperta.com/#about">About</a></li>
+        <li><a href="https://semexperta.com/#services">Services</a></li>
+        <li><a href="https://semexperta.com/#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Case Studies</a></li>
+        <li><a href="#" class="current">⚡ PPC Keyword Tool</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Cookie Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 semexperta. All rights reserved.</p>
+    <p>Designed for Search Marketing professionals</p>
+  </div>
+</footer>
+
+<script>
+  let showSymbols = false;
+  let showLabels = true;
+  let maxChar = false;
+  let lastResults = [];
+
+  function getLines(id) {
+    const prefix = document.getElementById('prefix-' + id).value.trim();
+    const suffix = document.getElementById('suffix-' + id).value.trim();
+    const raw = document.getElementById('col-' + id).value;
+    return raw.split('\n')
+      .map(l => l.trim())
+      .filter(l => l.length > 0)
+      .map(l => [prefix, l, suffix].filter(Boolean).join(' '));
+  }
+
+  function applyMatchType(kw, type) {
+    const k = kw.trim();
+    if (!k) return '';
+    switch(type) {
+      case 'exact':      return '[' + k + ']';
+      case 'phrase':     return '"' + k + '"';
+      case 'broad':      return k;
+      case 'modified':   return k.split(' ').map(w => '+' + w).join(' ');
+      case 'neg-exact':  return '-[' + k + ']';
+      case 'neg-phrase': return '-"' + k + '"';
+      case 'neg-broad':  return '-' + k;
+      case 'capitalize': return k.replace(/\b\w/g, c => c.toUpperCase());
+      default: return k;
+    }
+  }
+
+  function buildPermutation(perm, a, b, c, d) {
+    const map = { A: a, B: b, C: c, D: d };
+    const lists = perm.split('').map(ch => map[ch]).filter(l => l && l.length > 0);
+    if (lists.some(l => !l || l.length === 0)) return [];
+    let results = [''];
+    for (const list of lists) {
+      const newResults = [];
+      for (const existing of results) {
+        for (const item of list) {
+          newResults.push(existing ? existing + ' ' + item : item);
+        }
+      }
+      results = newResults;
+    }
+    return results;
+  }
+
+  function concatenate() {
+    const a = getLines('a');
+    const b = getLines('b');
+    const c = getLines('c');
+    const d = getLines('d');
+
+    const matchTypes = [];
+    if (document.getElementById('mt-exact').checked) matchTypes.push('exact');
+    if (document.getElementById('mt-phrase').checked) matchTypes.push('phrase');
+    if (document.getElementById('mt-broad').checked) matchTypes.push('broad');
+    if (document.getElementById('mt-modified').checked) matchTypes.push('modified');
+    if (document.getElementById('mt-neg-exact').checked) matchTypes.push('neg-exact');
+    if (document.getElementById('mt-neg-phrase').checked) matchTypes.push('neg-phrase');
+    if (document.getElementById('mt-neg-broad').checked) matchTypes.push('neg-broad');
+    if (document.getElementById('mt-capitalize').checked) matchTypes.push('capitalize');
+
+    const permCbs = document.querySelectorAll('.perm-cb:checked');
+    const perms = Array.from(permCbs).map(cb => cb.value);
+
+    if (matchTypes.length === 0) { alert('Please select at least one match type.'); return; }
+    if (perms.length === 0) { alert('Please select at least one permutation.'); return; }
+
+    const rawKeywords = [];
+    for (const perm of perms) {
+      const kws = buildPermutation(perm, a, b, c, d);
+      rawKeywords.push(...kws.map(k => ({ kw: k, perm })));
+    }
+
+    const output = [];
+    for (const { kw, perm } of rawKeywords) {
+      for (const mt of matchTypes) {
+        const formatted = applyMatchType(kw, mt);
+        output.push({ raw: kw, formatted, mt, perm });
+      }
+    }
+
+    lastResults = output;
+    renderOutput();
+  }
+
+  function renderOutput() {
+    let results = [...lastResults];
+    if (maxChar) results = results.filter(r => r.raw.length <= 25);
+
+    const lines = results.map(r => {
+      let line = r.formatted;
+      if (showLabels) line = '[' + r.perm + ' | ' + r.mt.toUpperCase() + '] ' + line;
+      return line;
+    });
+
+    document.getElementById('output-area').value = lines.join('\n');
+    document.getElementById('result-count').textContent = results.length + ' Results';
+
+    const longCount = lastResults.filter(r => r.raw.length > 25).length;
+    document.getElementById('long-count').textContent = longCount > 0
+      ? longCount + ' over 25 chars' : '';
+  }
+
+  function toggleSymbols() {
+    showSymbols = !showSymbols;
+    document.getElementById('btn-symbols').classList.toggle('active', showSymbols);
+    renderOutput();
+  }
+
+  function toggleLabels() {
+    showLabels = !showLabels;
+    document.getElementById('btn-labels').classList.toggle('active', showLabels);
+    renderOutput();
+  }
+
+  function toggleMaxChar() {
+    maxChar = !maxChar;
+    document.getElementById('btn-maxchar').classList.toggle('active', maxChar);
+    renderOutput();
+  }
+
+  function copyOutput() {
+    const ta = document.getElementById('output-area');
+    if (!ta.value) return;
+    navigator.clipboard.writeText(ta.value).then(() => {
+      const btn = event.target;
+      const orig = btn.textContent;
+      btn.textContent = '✓ Copied!';
+      setTimeout(() => btn.textContent = orig, 1500);
+    });
+  }
+
+  function downloadCSV() {
+    if (!lastResults.length) return;
+    const rows = ['Keyword,Match Type,Permutation,Formatted'];
+    lastResults.forEach(r => {
+      rows.push(`"${r.raw}","${r.mt}","${r.perm}","${r.formatted}"`);
+    });
+    const blob = new Blob([rows.join('\n')], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'ppc-keywords.csv'; a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  function resetAll() {
+    ['a','b','c','d'].forEach(id => {
+      document.getElementById('col-' + id).value = '';
+      document.getElementById('prefix-' + id).value = '';
+      document.getElementById('suffix-' + id).value = '';
+    });
+    document.getElementById('output-area').value = '';
+    document.getElementById('result-count').textContent = '0 Results';
+    document.getElementById('long-count').textContent = '';
+    lastResults = [];
+  }
+
+  function selectAllMatch(val) {
+    ['mt-exact','mt-phrase','mt-broad','mt-modified','mt-neg-exact','mt-neg-phrase','mt-neg-broad','mt-capitalize']
+      .forEach(id => document.getElementById(id).checked = val);
+  }
+
+  function selectAllPerms(val) {
+    document.querySelectorAll('.perm-cb').forEach(cb => cb.checked = val);
+  }
+</script>
+</body>
+</html>
