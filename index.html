@@ -26,7 +26,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <title>Online Search Marketing Professional | semexperta </title>
     <meta name="description" content="Ramona Fraedermann, Online Search Marketing Consultant specializing in PPC, SEO, and digital marketing strategies. Worldwide, English, Spanish & German language.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" ="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
@@ -96,6 +96,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <a href="#about" class="nav-link font-medium hover:text-primary transition-colors duration-300" onclick="handleNavigation(event, 'about')">About</a>
                     <a href="#projects" class="nav-link font-medium hover:text-primary transition-colors duration-300" onclick="handleNavigation(event, 'projects')">Projects</a>
                     <a href="#services" class="nav-link font-medium hover:text-primary transition-colors duration-300" onclick="handleNavigation(event, 'services')">Services</a>
+                    <a href="ppc-keyword-tool.html" class="font-medium transition-colors duration-300" style="color:#3dd9d7;">⚡ Tools</a>
                     <a href="#contact" class="nav-link font-medium hover:text-primary transition-colors duration-300" onclick="handleNavigation(event, 'contact')">Contact</a>
                 </div>
                 
@@ -111,6 +112,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <a href="#about" class="block py-2 font-medium hover:text-primary transition-colors duration-300" onclick="handleNavigation(event, 'about')">About</a>
                 <a href="#projects" class="block py-2 font-medium hover:text-primary transition-colors duration-300" onclick="handleNavigation(event, 'projects')">Projects</a>
                 <a href="#services" class="block py-2 font-medium hover:text-primary transition-colors duration-300" onclick="handleNavigation(event, 'services')">Services</a>
+                <a href="ppc-keyword-tool.html" class="block py-2 font-medium transition-colors duration-300" style="color:#3dd9d7;">⚡ Tools</a>
                 <a href="#contact" class="block py-2 font-medium hover:text-primary transition-colors duration-300" onclick="handleNavigation(event, 'contact')">Contact</a>
             </div>
         </nav>
@@ -411,7 +413,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <p class="text-gray-600 max-w-3xl mx-auto">Comprehensive search marketing solutions tailored to your business goals.</p>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Row 1: 3 services -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
                     <!-- Service 1 -->
                     <div class="bg-light p-8 rounded-2xl hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
                         <div class="text-primary text-4xl mb-6">
@@ -495,7 +498,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             Learn More <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
-                    
+                </div>
+
+                <!-- Row 2: CRO + PPC Tools -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Service 4 -->
                     <div class="bg-light p-8 rounded-2xl hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
                         <div class="text-primary text-4xl mb-6">
@@ -523,6 +529,72 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             Learn More <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>
+
+                    <!-- Free Tool Card -->
+                    <div class="p-8 rounded-2xl hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-2 relative overflow-hidden" style="background: linear-gradient(135deg, #f0fffe 0%, #e6fafa 100%); border-color: #3dd9d7;">
+                        <div class="text-4xl mb-6" style="color:#3dd9d7;">
+                            ⚡
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <a href="ppc-keyword-tool.html" class="text-xs font-bold px-3 py-1 rounded-full" style="background:#3dd9d7; color:#0d1b2a; letter-spacing:0.06em;">FREE</a>
+                        </div>
+                        <h3 class="text-xl font-bold text-dark mb-4">Free PPC Keyword Tool</h3>
+                        <p class="text-gray-600 mb-6">
+                            Build exhaustive PPC keyword lists in seconds. Combine keyword lists, generate all match types, and export to CSV — completely free.
+                        </p>
+                        <ul class="space-y-2 mb-8">
+                            <li class="flex items-center">
+                                <i class="fas fa-check mr-3" style="color:#3dd9d7;"></i>
+                                <span>Keyword Concatenation</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check mr-3" style="color:#3dd9d7;"></i>
+                                <span>All Match Types</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check mr-3" style="color:#3dd9d7;"></i>
+                                <span>CSV Export</span>
+                            </li>
+                        </ul>
+                        <a href="ppc-keyword-tool.html" class="text-primary font-semibold hover:text-secondary flex items-center">
+                            Learn More <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+
+                    <!-- Premium Tool Card -->
+                    <div class="p-8 rounded-2xl hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-2 relative overflow-hidden" style="background: linear-gradient(135deg, #0d1b2a 0%, #162232 100%); border-color: #2a93d5;">
+                        <!-- Premium badge -->
+                        <div class="absolute top-4 right-4 text-xs font-bold px-3 py-1 rounded-full" style="background:#2a93d5; color:#fff; letter-spacing:0.06em;">PREMIUM</div>
+                        <div class="text-4xl mb-6" style="color:#2a93d5;">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4" style="color:#f5f7fa;">Premium PPC Keyword & Ad Tool</h3>
+                        <p class="mb-6" style="color:#8a9bb0;">
+                            Build exhaustive PPC keyword lists and ads in seconds. Combine keyword lists, URLs, generate all match types, custom built ads and export to CSV ready to upload in Google Editor.
+                        </p>
+                        <ul class="space-y-2 mb-3">
+                            <li class="flex items-center" style="color:#cbd5e1;">
+                                <i class="fas fa-check mr-3" style="color:#2a93d5;"></i>
+                                <span>Keyword Concatenation</span>
+                            </li>
+                            <li class="flex items-center" style="color:#cbd5e1;">
+                                <i class="fas fa-check mr-3" style="color:#2a93d5;"></i>
+                                <span>All Match Types</span>
+                            </li>
+                            <li class="flex items-center" style="color:#cbd5e1;">
+                                <i class="fas fa-check mr-3" style="color:#2a93d5;"></i>
+                                <span>CSV Export</span>
+                            </li>
+                            <li class="flex items-center" style="color:#cbd5e1;">
+                                <i class="fas fa-check mr-3" style="color:#2a93d5;"></i>
+                                <span>Custom Ads</span>
+                            </li>
+                        </ul>
+                        <p class="text-sm mb-6" style="color:#8a9bb0;">Price upon request</p>
+                        <a href="#contact" class="font-semibold flex items-center" style="color:#2a93d5;" onclick="handleNavigation(event, 'contact')">
+                            Get in Touch Now <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        </div>
                 </div>
             </div>
         </section>
@@ -617,7 +689,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                 </div>
                                 <div>
                                     <h4 class="text-xl font-bold mb-2">Email</h4>
-                                    <p class="text-white/80">ramona@semexperta.com</p>
+                                    <p class="text-white/80"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a7d5c6cac8c9c6e7d4c2cac2dfd7c2d5d3c689c4c8ca">[email&#160;protected]</a></p>
                                     <p class="text-white/80">Response within 24-48 hours</p>
                                 </div>
                             </div>
@@ -672,7 +744,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <ul class="space-y-2">
                             <li><a href="#" class="text-gray-400 hover:text-primary transition-colors duration-300">Blog</a></li>
                             <li><a href="#" class="text-gray-400 hover:text-primary transition-colors duration-300">Case Studies</a></li>
-                            <li><a href="ppc-keyword-tool.html" style="color:#3dd9d7; font-weight:600;">⚡ PPC Keyword Tool</a></li>
+                            <li><a href="ppc-keyword-tool.html" class="font-semibold transition-colors duration-300" style="color:#3dd9d7;">⚡ PPC Keyword Tool</a></li>
                         </ul>
                     </div>
                     <div>
@@ -713,7 +785,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Define data at the beginning
         const navigationSections = [
             { "id": "home", "label": "Home" },
@@ -938,7 +1010,3 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         // Close mobile menu when clicking outside
         document.addEventListener('click', function(event) {
             const isClickInsideMenu = mobileMenu.contains(event.target);
-            const isClickOnButton = mobileMenuButton.contains(event.target);
-            
-            if (!isClickInsideMenu && !isClickOnButton && !mobileMenu.classList.contains('hidden')) {
-                mobileMenu.classList.ad
